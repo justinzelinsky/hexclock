@@ -2,52 +2,47 @@
 <html lang="en">
 
 <head>
-  <title>hex clock</title>
-  <style type="text/css">
-    #hex {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 600px;
-      height: 150px;
-      padding: 20px;
-      font-family: Courier New, sans-serif;
-      text-align: center;
-      color: #FFFFFF;
-      font-size: 120px;
-      font-weight: bold;
-      letter-spacing: 4px;
-    }
-  </style>
-  <script type="text/javascript">
-    var hexTime = function() {
-      var now = new Date();
-      var hours = now.getHours();
-      var min = now.getMinutes();
-      var sec = now.getSeconds();
-
-      if (hours < 10) {
-        hours = '0' + hours;
-      }
-      if (min < 10) {
-        min = '0' + min;
-      }
-      if (sec < 10) {
-        sec = '0' + sec;
-      }
-      var color = '#' + hours + min + sec;
-
-      document.getElementsByTagName('body')[0].style.backgroundColor = color;
-      document.getElementById('hex').innerText = color;
-    }
-    window.onload = hexTime;
-    setInterval(hexTime, 1000);
-  </script>
+    <title>hex clock</title>
+    <style type="text/css">
+        #hex {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 150px;
+            text-align: center;
+            color: #FFF;
+            font-size: 120px;
+            letter-spacing: 4px;
+        }
+    </style>
 </head>
 
 <body>
-  <span id="hex"></span>
+    <span id="hex"></span>
+    <script type="text/javascript">
+        function hexTime() {
+            const now = new Date();
+            let hours = now.getHours();
+            let min = now.getMinutes();
+            let sec = now.getSeconds();
+            if (hours < 10){
+                hours = '0' + hours;
+            } 
+            if (min < 10) {
+                min = '0' + min;
+            }
+            if (sec < 10) {
+                sec = '0' + sec;
+            }
+            const color = '#' + hours + min + sec;
+            document.getElementsByTagName('body')[0].style.backgroundColor = color;
+            document.getElementById('hex').innerText = color;
+            setTimeout(hexTime, 1000);
+        }
+        hexTime();
+    </script>
 </body>
 
 </html>
